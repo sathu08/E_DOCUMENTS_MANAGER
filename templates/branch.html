@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+<title>Document Manager</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    .label-container {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .row {
+        display: flex;
+        justify-content: start;
+        flex-wrap: wrap;
+    }
+
+    header {
+        background-color: #0c3d60;
+        color: #E57200;
+        font-size: 24px;
+        text-align: center;
+        padding: 10px;
+        border-radius: 5px;
+        height: 25px;
+        width: 98.8%;
+        display: flex;
+        position: relative;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    header img {
+        max-width: 110px;
+        margin-left: 20px;
+    }
+
+    .button {
+        background-color: #2A52BE;
+        color: white;
+        border: none;
+        padding: 50px 50px;
+        margin: 5px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 20px;
+        cursor: pointer;
+        border-radius: 5px;
+        flex: 0 0 calc(20% - 10px);
+    }
+
+    .custom-button {
+        background-color: #0c3d60;
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        padding: 0 5px;
+        font-size: 24px;
+    }
+
+    .Lock-label {
+        position: absolute;
+        top: 50%; /* Position from the top */
+        right: 120px; /* Distance from the right */
+        transform: translateY(-50%); /* Center vertically */
+        background-color: #0c3d60;
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        padding: 0 5px;
+        font-size: 20px;
+    }
+    .Add-button {
+        position: absolute;
+        top: 50%; /* Position from the top */
+        right: 160px; /* Distance from the right */
+        transform: translateY(-50%); /* Center vertically */
+        background-color: #0c3d60;
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        padding: 0 5px;
+        font-size: 20px;
+    }
+    .Delete-button {
+        position: absolute;
+        top: 50%; /* Position from the top */
+        right: 280px; /* Distance from the right */
+        transform: translateY(-50%); /* Center vertically */
+        background-color: #0c3d60;
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        padding: 0 5px;
+        font-size: 20px;
+    }
+    .login-button {
+        position: absolute;
+        top: 50%; /* Position from the top */
+        right: 420px; /* Distance from the right */
+        transform: translateY(-50%); /* Center vertically */
+        background-color: #0c3d60;
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        padding: 0 5px;
+        font-size: 20px;
+    }
+
+    @media (max-width: 800px) {
+        .button {
+            flex: 0 0 calc(50% - 10px);
+        }
+    }
+
+    @media (max-width: 500px) {
+        .button {
+            flex: 0 0 calc(100% - 10px);
+        }
+    }
+</style>
+</head>
+<body>
+<header>
+    <button class="custom-button" onclick="redirectTo('home')">E-DOCUMENTS MANAGER</button>
+    <form action="/branch" method="get">
+{% if buttontype %}
+    <button class="Add-button" name="Add_branch" value="{{ path }}"> Add Branch</button>
+    <button class="Delete-button" name="Delete_branch" value="{{ path }}">Delete Branch</button>
+    <label class="Lock-label"><i class="fas fa-lock-open"></i></label>
+{% else %}
+    <button class="Add-button" name="Add_branch" value="{{ path }}" disabled> Add Branch</button>
+    <button class="Delete-button" name="Delete_branch" value="{{ path }}" disabled>Delete Branch</button>
+    <label class="Lock-label"><i class="fas fa-lock"></i></label>
+{% endif %}
+</form>
+<button class="login-button" onclick="redirectTo('login')">Login</button>
+    <img src="../static/icon_and_background/Visteon_wordmark_white.png" alt="Header Image">
+</header>
+<div class="container">
+  <div class="label-container">
+    <label>Department:{{paths[0]}} Line:{{paths[1]}}</label>
+  </div>
+  <form action="/branch" method="get">
+    <div class="row">
+      {% for value in values %}
+      <button class="button" name="branch_button_value" value="{{ value }}">{{ value }}</button>
+      {% endfor %}
+    </div>
+  </form>
+</div>
+ <script>
+    function redirectTo(url) {
+        window.location.href = url;
+    }
+</script>
+</body>
+</html>

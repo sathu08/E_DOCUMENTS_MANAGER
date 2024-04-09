@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document Manager</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  .container {
+    padding: 20px;
+  }
+  .label-container {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  header {
+      background-color: #0c3d60;
+      color: #E57200;
+      font-size: 24px;
+      text-align: center;
+      padding: 10px;
+      border-radius: 5px;
+      height: 25px;
+      width: 98.8%;
+      display: flex;
+      position: relative;
+      justify-content: space-between;
+      align-items: center;
+  }
+
+  header img {
+      max-width: 110px;
+      margin-left: 20px;
+  }
+  .custom-button {
+    background-color: #0c3d60;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 0 5px;
+    font-size: 24px;
+  }
+  iframe {
+    width: 100%;
+    height: 85vh; /* Adjust this value as needed */
+    border: none;
+  }
+</style>
+</head>
+<body>
+<header>
+    <button class="custom-button" onclick="redirectTo('home')">E-DOCUMENTS MANAGER</button>
+    <img src="../static/icon_and_background/Visteon_wordmark_white.png" alt="Header Image">
+</header>
+<div class="container">
+<div class="label-container">
+    <label>Line:{{path[0]}} {{path[2]}} || Station:{{path[2]}}</label>
+  </div>
+<h1 style="text-align: center;">PDF Viewer</h1>
+<iframe src="/view-pdf" allowfullscreen></iframe>
+</div>
+ <script>
+    function redirectTo(url) {
+        window.location.href = url;
+    }
+</script>
+</body>
+</html>
